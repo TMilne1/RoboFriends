@@ -1,20 +1,41 @@
-import React from 'react';
-import Cardlist from './cardList';
-import { robots } from './robots';
+import React,{Component} from 'react';
+import {robots} from './robots';
+import Searchbox from './searchbox';
+import Cardlist from './cardList'
+import './App.css'
 
-const App = ()=>{
-    return(
-        <div>
-            <div>
-                <h1>RoboFriends</h1>
 
-            </div>
-            <div>
-                <Cardlist robots ={robots}/>
-            </div>
+class App extends Component {
+    constructor(){
+        super();
+        this.state={
+            robots: robots,
+            searchfield: ''
+        }
+    }
 
-        </div>
-    )
+    searchChange = (event) => {
+        this.setState({ searchfield: event.target.value })
+    }
+
+    render(){
+        const filtered = this.state.robots.filter(robots => {
+            return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
+        })
+            return(
+                <div className='tc'>
+                    <div>
+                        <h1 className = 'f2'>RoboFriends</h1>
+                        <Searchbox search = {this.searchChange}/>
+                    </div>
+                    <div>
+                        <Cardlist robots={filtered} />
+                    </div>
+                </div>
+            )
+        }
+    
+
 }
-export default App;
 
+export default App;
