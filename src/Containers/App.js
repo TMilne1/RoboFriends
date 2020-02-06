@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import Searchbox from './searchbox';
-import Cardlist from './cardList';
-import Scroll from './Scroll';
+import Searchbox from '../Components/searchbox';
+import Cardlist from '../Components/cardList';
+import Scroll from '../Components/Scroll';
 import './App.css';
 
 
